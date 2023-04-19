@@ -35,15 +35,55 @@ a.value = 20
 
 
 //  reactive -> {}
-const user = reactive({
-    age: 10
+// const user = reactive({
+//     age: 10
+// })
+
+// let nextAge = 0
+
+// effectWatch(() => {
+//     nextAge = user.age + 1
+//     console.log(nextAge)
+// })
+
+// user.age++
+
+const context = reactive({
+    count: 0
 })
 
-let nextAge = 0
+window.context = context
 
 effectWatch(() => {
-    nextAge = user.age + 1
-    console.log(nextAge)
+    
 })
 
-user.age++
+const App = {
+    // template -> render
+    render(context){
+        //ui
+        effectWatch(() => {
+            document.querySelector('#app').textContent = ''
+            const element = document.createElement('div')
+            const text = document.createTextNode('nihao')
+            const text1 = document.createTextNode(context.obj.count)
+            element.append(text)
+            element.append(text1)
+            document.querySelector('#app').append(element)
+        })
+    },
+
+    setup(){
+        const obj = reactive({
+            count: 0
+        })
+
+        window.obj = obj
+
+        return {
+            obj
+        }
+    }
+}
+
+App.render(App.setup())
