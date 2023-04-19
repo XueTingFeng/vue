@@ -11,16 +11,25 @@ export default {
             // element.append(text1)
             // return element
 
-            return h("div", { id: 'foo', class: 'test' } , [
-                h("p", {}, "nihao"),
-                h("p", {}, String(context.obj.count))
-            ])
+            // return h("div", { id: 'foo', class: 'test' } , [
+            //     h("p", {}, "nihao"),
+            //     h("p", {}, String(context.obj.count))
+            // ])
+
+            //1. test diff tag
+            //return h(context.obj.tag, {}, "1")
+            //2. test diff props
+            return h("div",context.obj.props, "")
 
     },
 
     setup(){
         const obj = reactive({
-            count: 0
+            count: 0,
+            tag: "div",
+            props: {
+                a: "a"
+            }
         })
 
         window.obj = obj
