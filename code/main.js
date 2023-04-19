@@ -15,23 +15,23 @@
 // //触发的依赖
 // a.value = 20
 
-import { 
-    Dep, 
-    effectWatch,
-    reactive 
-} from './index.js'
+// import { 
+//     Dep, 
+//     effectWatch,
+//     reactive 
+// } from './core/index.js'
 
-let a = new Dep(10)
-let b = 0
+// let a = new Dep(10)
+// let b = 0
 
-effectWatch(() => {
-    //收集的依赖
-    b = a.value + 10
-    console.log(b)
-})
+// effectWatch(() => {
+//     //收集的依赖
+//     b = a.value + 10
+//     console.log(b)
+// })
 
-//触发的依赖
-a.value = 20
+// //触发的依赖
+// a.value = 20
 
 
 //  reactive -> {}
@@ -48,42 +48,21 @@ a.value = 20
 
 // user.age++
 
-const context = reactive({
-    count: 0
-})
+// const context = reactive({
+//     count: 0
+// })
 
-window.context = context
+// window.context = context
 
-effectWatch(() => {
+// effectWatch(() => {
     
-})
+// })
 
-const App = {
-    // template -> render
-    render(context){
-        //ui
-        effectWatch(() => {
-            document.querySelector('#app').textContent = ''
-            const element = document.createElement('div')
-            const text = document.createTextNode('nihao')
-            const text1 = document.createTextNode(context.obj.count)
-            element.append(text)
-            element.append(text1)
-            document.querySelector('#app').append(element)
-        })
-    },
 
-    setup(){
-        const obj = reactive({
-            count: 0
-        })
 
-        window.obj = obj
+// App.render(App.setup())
 
-        return {
-            obj
-        }
-    }
-}
+import { createApp } from "./core/index.js";
+import App from "./App.js";
 
-App.render(App.setup())
+createApp(App).mount(document.querySelector('#app'))
