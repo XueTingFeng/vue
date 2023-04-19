@@ -7,8 +7,9 @@ export function createApp(rootComponent){
 
             effectWatch(() => {
                 rootContainer.textContent = ``
-                const element = rootComponent.render(setupResult)
-                rootContainer.append(element)
+                const subTree = rootComponent.render(setupResult)
+                console.log(subTree)
+                // rootContainer.append(element)
             })
         }
     }
