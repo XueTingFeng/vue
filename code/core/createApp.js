@@ -1,4 +1,4 @@
-import { effectWatch } from "./index.js"
+import { effectWatch, mountElement } from "./index.js"
 
 export function createApp(rootComponent){
     return {
@@ -10,6 +10,7 @@ export function createApp(rootComponent){
                 const subTree = rootComponent.render(setupResult)
                 console.log(subTree)
                 // rootContainer.append(element)
+                mountElement(subTree,rootContainer)
             })
         }
     }

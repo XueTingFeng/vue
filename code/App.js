@@ -11,9 +11,9 @@ export default {
             // element.append(text1)
             // return element
 
-            return h("div", {} , [
+            return h("div", { id: 'foo', class: 'test' } , [
                 h("p", {}, "nihao"),
-                h("p", {}, context.obj.count)
+                h("p", {}, String(context.obj.count))
             ])
 
     },
