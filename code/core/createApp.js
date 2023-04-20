@@ -15,8 +15,6 @@ export function createApp(rootComponent){
                     mountElement(subTree,rootContainer)
                 } else {
                     const subTree = rootComponent.render(setupResult)
-                    console.log("old",prevSubTree)
-                    console.log("new",subTree)
 
                     //diff
                     diff(prevSubTree,subTree)

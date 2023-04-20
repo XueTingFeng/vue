@@ -1,5 +1,6 @@
 import { reactive, h } from "./core/index.js"
 
+window.h = h
 export default {
     // template -> render
     render(context){
@@ -19,7 +20,10 @@ export default {
             //1. test diff tag
             //return h(context.obj.tag, {}, "1")
             //2. test diff props
-            return h("div",context.obj.props, "")
+            //return h("div",context.obj.props, "")
+            //3. test diff childrem
+            //return h("div", {} , context.obj.children)
+            return h("div", {}, context.obj.children)
 
     },
 
@@ -29,7 +33,11 @@ export default {
             tag: "div",
             props: {
                 a: "a"
-            }
+            },
+            children: [
+                h("p",{},"1"),
+                h("p",{},"2"),
+            ]
         })
 
         window.obj = obj
